@@ -1,0 +1,95 @@
+/* Apply box-sizing to all elements and pseudo-elements */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Style the body with no margin and a gradient background */
+body {
+    margin: 0;
+    background: linear-gradient(to right, #ff4800, #393838);
+}
+
+/* Style for the calculator grid */
+.calculator-grid {
+    display: grid;
+    background-color: #fff; /* White background for the calculator */
+    margin: 10rem auto; /* Center the grid with top and bottom margin */
+    justify-content: center; /* Center the grid items horizontally */
+    grid-template-columns: repeat(4, 4rem); /* Define 4 columns of 4rem width */
+    grid-template-rows: minmax(5rem, auto) repeat(5, 4rem); /* Define rows with min height and flexible heights */
+    width: fit-content; /* Adjust width based on content */
+    border: 10px solid #000; /* Black border around the grid */
+    border-radius: 1rem; /* Rounded corners for the grid */
+}
+
+/* Style for buttons inside the calculator grid */
+.calculator-grid > button {
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 2rem; /* Font size for button text */
+    border: 1px solid #000; /* Black border around buttons */
+    outline: none; /* Remove default outline */
+    background-color: rgba(255, 255, 255, .75); /* Light background for buttons */
+}
+
+/* Style for buttons on hover and focus */
+.calculator-grid > button:hover,
+.calculator-grid > button:focus {
+    background-color: rgba(255, 255, 255, .9); /* Slightly darker background on hover/focus */
+}
+
+/* Style for buttons that span two columns */
+.span-two {
+    grid-column: span 2; /* Make the button span across 2 columns */
+}
+
+/* Style for the output area of the calculator */
+.output {
+    grid-column: 1 / -1; /* Span across all columns */
+    background-color: rgba(95, 90, 90, 0.75); /* Darker background for output */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: end; /* Align items to the end */
+    justify-content: space-around; /* Space items evenly */
+    padding: .75rem; /* Padding inside the output area */
+    word-wrap: break-word; /* Wrap long words */
+    word-break: break-all; /* Break long words at any point */
+}
+
+/* Style for previous operand in the output area */
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75); /* Light text color */
+    font-size: 1.5rem; /* Font size for previous operand */
+}
+
+/* Style for current operand in the output area */
+.output .current-operand {
+    color: rgba(255, 255, 255, .75); /* Light text color */
+    font-size: 2.5rem; /* Font size for current operand */
+}
+
+/* Styles for smaller screens */
+@media (max-width: 600px) {
+    .calculator-grid {
+        margin: 15rem auto; 
+        grid-template-columns: repeat(4, 3rem); 
+        grid-template-rows: minmax(4rem, auto) repeat(5, 3rem); 
+        border: 5px solid #000; 
+        border-radius: 0.5rem; 
+    }
+
+    .calculator-grid > button {
+        font-size: 1.5rem; 
+    }
+
+    .output {
+        padding: .5rem;
+    }
+
+    .output .previous-operand {
+        font-size: 1.2rem; 
+    }
+
+    .output .current-operand {
+        font-size: 2rem; 
+    }
+}
