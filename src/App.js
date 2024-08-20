@@ -64,9 +64,11 @@ function reducer(state, { type, payload }) {
         operation: payload.operation,
         currentOperand: null,
       }
+    
     // Handle clearing the calculator
     case ACTIONS.CLEAR:
       return {}
+    
     // Handle deleting the last digit
     case ACTIONS.DELETE_DIGIT:
       if (state.overwrite) {
@@ -85,6 +87,7 @@ function reducer(state, { type, payload }) {
         ...state,
         currentOperand: state.currentOperand.slice(0, -1),
       }
+    
     // Handle evaluating the expression
     case ACTIONS.EVALUATE:
       if (
@@ -144,6 +147,7 @@ function formatOperand(operand) {
 
 // Main App component
 function App() {
+  
   // Use the reducer to manage the calculator state
   const [{ currentOperand, previousOperand, operation }, dispatch] = useReducer(
     reducer,
@@ -153,12 +157,14 @@ function App() {
   return (
     <div className="calculator-grid">
       <div className="output">
+        
         {/* Display previous operand, operation, and current operand */}
         <div className="previous-operand">
           {formatOperand(previousOperand)} {operation}
         </div>
         <div className="current-operand">{formatOperand(currentOperand)}</div>
       </div>
+      
       {/* Calculator buttons */}
       <button
         className="span-two"
